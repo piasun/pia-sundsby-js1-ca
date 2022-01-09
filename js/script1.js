@@ -1,13 +1,27 @@
-const url = "https://wger.de/api/v2/exercisecategory";
+const url = "https://zoo-animal-api.herokuapp.com/animals/rand/10";
 
-async function exerciseCategory() {
+const animalsContainer = document.querySelector(".animals")
+
+async function animalsOverview() {
 
     const response = await fetch(url);
 
-    const results = response.json();
+    const results = await response.json();
 
-    console.log(results);
+    const type = results;
 
+    animalsContainer.innerHTML = "";
+
+    for (let i = 0; i < type.length; i++) {
+        console.log(type[i].name);
+
+        animalsContainer.innerHTML += `
+        <div class="animal">
+        <div>Name: ${type[i].name}</div> 
+        <div>Animal type: ${type[i].animal_type}</div>
+        <div>Diet: ${type[i].diet}</div>
+        </div>`;
+    }
 }
 
-exerciseCategory();
+animalsOverview();

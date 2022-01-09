@@ -1,5 +1,42 @@
+body {
+  font-size: 16px;
+  min-height: 100vh;
+  margin: 0px auto;
+}
+
 h1 {
-  margin-left: 1rem;
-  font-size: 40px;
+  margin-left: 10px;
+  font-size: 30px;
   text-transform: uppercase;
+  color: darkorchid;
+}
+
+.animals {
+  margin-left: 20px;
+}
+
+.animal,
+.animal_details {
+  padding: 10px;
+  font-weight: bold;
+  border-top: 2px solid darkorchid;
+  border-bottom: 2px solid darkorchid;
+}
+
+.loading {
+  border: 20px solid white;
+  border-top: 20px solid darkorchid;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
