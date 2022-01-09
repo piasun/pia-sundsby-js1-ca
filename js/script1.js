@@ -12,16 +12,14 @@ async function animalsOverview() {
 
     animalsContainer.innerHTML = "";
 
-    for (let i = 0; i < type.length; i++) {
-        console.log(type[i].name);
-
+    type.forEach(function(result) {
         animalsContainer.innerHTML += `
         <div class="animal">
-        <div>Name: ${type[i].name}</div> 
-        <div>Animal type: ${type[i].animal_type}</div>
-        <div>Diet: ${type[i].diet}</div>
+        <div>Name: ${result.name}</div> 
+        <div>Animal type: ${result.animal_type}</div>
+        <div>Diet: ${result.diet}</div>
         </div>`;
-    }
+    });
 }
 
 animalsOverview();
