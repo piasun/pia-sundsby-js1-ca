@@ -1,4 +1,10 @@
 body {
+  background: rgb(208, 88, 142);
+  background: linear-gradient(
+    90deg,
+    rgba(208, 88, 142, 1) 0%,
+    rgba(126, 29, 171, 1) 100%
+  );
   font-size: 16px;
   min-height: 100vh;
   margin: 0px auto;
@@ -8,10 +14,34 @@ h1 {
   margin-left: 10px;
   font-size: 30px;
   text-transform: uppercase;
-  color: darkorchid;
+  color: #075f5f;
 }
 
-.animals {
+header {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+nav {
+  display: block;
+  position: static;
+  background: none;
+}
+
+nav ul {
+  padding: 0px;
+}
+
+nav li {
+  display: inline-block;
+  padding: 10px;
+  color: white;
+}
+
+.container {
   margin-left: 20px;
 }
 
@@ -19,13 +49,49 @@ h1 {
 .animal_details {
   padding: 10px;
   font-weight: bold;
-  border-top: 2px solid darkorchid;
-  border-bottom: 2px solid darkorchid;
+}
+
+form {
+  max-width: 650px;
+  margin: 10px;
+  padding: 20px;
+  background: white;
+  border-radius: 5px;
+}
+
+input {
+  width: 75%;
+  margin-top: 2px;
+  padding: 10px;
+}
+
+button {
+  background-color: #075f5f;
+  color: white;
+  text-decoration: none;
+  padding: 10px 28px;
+  margin-top: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+label p {
+  margin-bottom: 5px;
+}
+
+.form_error {
+  display: none;
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 2px;
 }
 
 .loading {
   border: 20px solid white;
-  border-top: 20px solid darkorchid;
+  border-top: 20px solid #075f5f;
   border-radius: 50%;
   width: 100px;
   height: 100px;
