@@ -8,17 +8,22 @@ const id = params.get("id");
 
 console.log(id);
 
-const detailUrl = "https://api.punkapi.com/v2/beers/" + id;
+const url = "https://api.punkapi.com/v2/beers/" + id;
 
-console.log(detailUrl);
+console.log(url);
+
 
 async function beerDetails() {
 
     try {
-        const response = await fetch(detailUrl);
+        const response = await fetch(url);
         const details = await response.json();
         
         console.log(details);
+
+        const headTitle = document.querySelector ("title");
+        headTitle.innerHTML = details[0].name;
+
 
         createDetailsHtml(details);
 
@@ -32,13 +37,14 @@ async function beerDetails() {
 beerDetails();
 
 function createDetailsHtml(details) {
-    detailsContainer.innerHTML = `<h1>${details.name}</h1>
-                                        <div class="image" style="background-image: url('${details.image_url}')"></div>
+    detailsContainer.innerHTML = `<h1>${details[0].name}</h1>
+                                        <img class="image" src="${details[0].image_url}" alt="Image of ${details[0].name}">
                                         <div class="beers-list">
-                                        <div>Tagline: ${details.tagline}</div> 
-                                        <div>Brewed: ${details.first_brewed}</div>
-                                        <div>Description: ${details.description}</div>
-                                        <div>Latest revision: ${details.latest_revision}</div>
-                                        <div>Last modified: ${details.last_modified}</div>
+                                        <div>Tagline: ${details[0].tagline}</div> 
+                                        <div>Brewed: ${details[0].first_brewed}</div>
+                                        <div>Description: ${details[0].description}</div>
+                                        <div>Ingredients: ${details[0].ingredients}</div>
+                                        <div>Great with: ${details[0].food_pairing}</div>
                                         </div>`;
 }
+

@@ -41,6 +41,20 @@ nav li {
   color: white;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
 .container {
   margin-left: 20px;
 }
@@ -50,6 +64,11 @@ nav li {
   padding: 10px;
   font-weight: bold;
   max-width: 850px;
+}
+
+.image {
+  max-height: 250px;
+  margin: 30px 20px;
 }
 
 form {
