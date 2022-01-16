@@ -30,6 +30,8 @@ async function animalsOverview() {
 
 animalsOverview();
 
+//details
+
 const animalDetailsContainer = document.querySelector(".animal_details")
 const detailUrl = "https://zoo-animal-api.herokuapp.com/animals/rand/";
 
@@ -53,24 +55,28 @@ async function animalDetails() {
 animalDetails();
 
 function createDetailsHtml(details) {
-    container.innerHTML = `<h1>${details.name}</h1>
-                            `;
+    animalDetailsContainer.innerHTML = `<h1>${details.name}</h1>
+                                        <div class="details-image" style="background-image: url('${details.image_link}')"></div>
+
+                                        `;
 }
 
-const form = document.querySelector(".contact-form");
-const fullName = document.querySelector(".fullName");
-const fullNameError = document.querySelector(".fullNameError");
-const subject = document.querySelector(".subject");
-const subjectError = document.querySelector(".subjectError");
-const email = document.querySelector(".email");
-const  emailError = document.querySelector(".emailError");
-const adress = document.querySelector(".adress");
-const adressError = document.querySelector(".adressError");
+//contact
+
+const form = document.querySelector("#contact-form");
+const fullName = document.querySelector("#fullName");
+const fullNameError = document.querySelector("#fullNameError");
+const subject = document.querySelector("#subject");
+const subjectError = document.querySelector("#subjectError");
+const email = document.querySelector("#email");
+const  emailError = document.querySelector("#emailError");
+const adress = document.querySelector("#adress");
+const adressError = document.querySelector("#adressError");
 
 function validateForm() {
     event.preventDefault();
 
-    if (checkLength(fullName.value, 0) === true) {
+    if (checkLength(fullName.value, 4) === true) {
         fullNameError.style.display = "none";
     } else {
         fullNameError.style.display = "block";
@@ -108,6 +114,6 @@ function checkLength(value) {
 
 function validateEmail(email) {
     const regEx = /\S+@\S+\.\S+/;
-    const petternMatches = regEx.test(email);
+    const patternMatches = regEx.test(email);
     return patternMatches;
 }
