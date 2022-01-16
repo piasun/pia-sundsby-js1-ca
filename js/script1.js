@@ -1,65 +1,35 @@
-const url = "https://zoo-animal-api.herokuapp.com/animals/rand/10";
+const beersContainer = document.querySelector(".beers-list")
 
-const animalsContainer = document.querySelector(".animals")
+const url = "https://api.punkapi.com/v2/beers";
 
-
-async function animalsOverview() {
+async function beersOverview() {
 
     try {
         const response = await fetch(url);
-
         const results = await response.json();
+
+        console.log(results);
     
-        const type = results;
+        beersContainer.innerHTML = "";
+
+        const beers = results;
     
-        animalsContainer.innerHTML = "";
-    
-        type.forEach(function(result) {
-            animalsContainer.innerHTML += `
-            <div class="animal">
-            <div>Name: ${result.name}</div> 
-            <div>Animal type: ${result.animal_type}</div>
-            <div>Diet: ${result.diet}</div>
-            </div>`;
+        beers.forEach(function(beer) {
+            beersContainer.innerHTML += `<a href="details.html?id=${beer.id}" class="beers-list">
+                                            <div class="image" style="background-image: url('${beer.image_url}')"></div>
+                                            <div>Name: ${beer.name}</div>
+                                            <div>Tagline: ${beer.tagline}</div> 
+                                            <div>Description: ${beer.description}</div>
+                                        </a>`;
         });
     }
     catch(error) {
-        animalsContainer.innerHTML = "Oh darn, something went wrong!";
+        beersContainer.innerHTML = "Oh darn, something went wrong!";
     }
+     
 }
 
-animalsOverview();
-
-//details
-
-const animalDetailsContainer = document.querySelector(".animal_details")
-const detailUrl = "https://zoo-animal-api.herokuapp.com/animals/rand/";
-
-async function animalDetails() {
-
-    try {
-        const response = await fetch(detailUrl);
-        const details = await response.json();
-        
-        console.log(details);
-
-        createDetailsHtml(details);
-
-    }
-    catch(error) {
-        animalDetailsContainer.innerHTML = "Oh darn, something went wrong!";
-    }   
-
-}
-
-animalDetails();
-
-function createDetailsHtml(details) {
-    animalDetailsContainer.innerHTML = `<h1>${details.name}</h1>
-                                        <div class="details-image" style="background-image: url('${details.image_link}')"></div>
-
-                                        `;
-}
+beersOverview();
 
 //contact
 
@@ -76,7 +46,7 @@ const adressError = document.querySelector("#adressError");
 function validateForm() {
     event.preventDefault();
 
-    if (checkLength(fullName.value, 4) === true) {
+    if (checkLength(fullName.value, 0) === true) {
         fullNameError.style.display = "none";
     } else {
         fullNameError.style.display = "block";
@@ -104,8 +74,8 @@ function validateForm() {
 
 form.addEventListener("submit", validateForm);
 
-function checkLength(value) {
-    if(value.trim().length > 0) {
+function checkLength(value, len) {
+    if(value.trim().length > len) {
         return true;
     } else {
         return false;

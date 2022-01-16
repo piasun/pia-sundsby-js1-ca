@@ -45,10 +45,11 @@ nav li {
   margin-left: 20px;
 }
 
-.animal,
-.animal_details {
+.beers-list,
+.beer_details {
   padding: 10px;
   font-weight: bold;
+  max-width: 850px;
 }
 
 form {
