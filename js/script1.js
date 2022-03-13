@@ -31,6 +31,5 @@ async function beersOverview() {
 
 beersOverview();
 
-//contact
 
 
